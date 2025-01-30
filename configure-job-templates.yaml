@@ -31,6 +31,7 @@
           - look-and-feel
   tasks:
     # - debug: msg="{{ inventory_hostname }}"
+<<<<<<< HEAD
     - name: Create coe-lab-stormshift-notifications notification template
       awx.awx.notification_template:
         state: present
@@ -49,6 +50,9 @@
           use_ssl: no
 
     - name: "Create jobs: StormShift Cluster Mgmt - {{ inventory_hostname }}"
+=======
+    - name: "Create jobs: StormShift Cluster Mgmt"
+>>>>>>> 2d9d5c9 (First draft of feature-netapp-trident)
       awx.awx.job_template:
         name: "🌪️ StormShift Cluster Mgmt - {{ inventory_hostname }}"
         description: "Do NOT edit, managed by Ansible: https://github.com/stormshift/automation/blob/master/configure-job-templates.yaml"
@@ -105,9 +109,19 @@
                 },
                 {
                     "choices": [
+<<<<<<< HEAD
                       {% for feature in features_by_cluster_type[cluster_type].all_available_features %}
                         "{{ feature }}"{% if not loop.last %},{% endif %}
                       {% endfor %}
+=======
+                        "manage-with-acm",
+                        "redhat-internal-certificate",
+                        "coe-sso",
+                        "lvms",
+                        "rhoai",
+                        "look-and-feel",
+                        "netapp-trident"
+>>>>>>> 2d9d5c9 (First draft of feature-netapp-trident)
                     ],
                     {% if stormshift_cluster_features is defined %}
                     "default": "{{ stormshift_cluster_features | join('\n') }}",
