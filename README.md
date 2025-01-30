@@ -125,7 +125,8 @@ vim development-example.env-private
 source development-example.env-private
 ```
 
-### Run it
+### Run it, a few examples
+
 ```bash
 
 ansible-navigator run stormshift-cluster-mgmt.yaml \
@@ -138,6 +139,10 @@ ansible-navigator run configure-job-templates.yaml \
     --vault-password-file=.vault_pass \
     -e @development-example.vars-private \
     -l ocp3
+
+ansible-navigator run configure-job-templates.yaml \
+    --vault-password-file=.vault_pass \
+    -e @development-example.vars-private -v
 
 ansible-navigator run request-cert.yaml \
     --vault-password-file=.vault_pass \
